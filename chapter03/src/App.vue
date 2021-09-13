@@ -1,17 +1,23 @@
 <template>
-  <the-header v-bind:text="Math.floor(Math.random() * 10) % 2 === 0 ? 'even' : 'odd'"/>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <img alt="Vue logo" src="./assets/logo.png"/>
+  <BaseButton @onClick="alertOnClick">+</BaseButton>
 </template>
 
 <script lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
 import TheHeader from './components/TheHeader.vue'
+import BaseButton from "./components/BaseButton.vue";
 
 export default {
   components: {
+    BaseButton,
     HelloWorld,
     TheHeader
+  },
+  methods: {
+    alertOnClick: () => {
+      alert('Hello World')
+    }
   }
 }
 </script>
