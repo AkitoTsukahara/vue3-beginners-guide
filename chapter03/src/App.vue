@@ -1,6 +1,8 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png"/>
-  <BaseButton @onClick="alertOnClick">+</BaseButton>
+  <div>{{ count }}</div>
+  <BaseButton @onClick="plusOne">+</BaseButton>
+  <BaseButton @onClick="minusOne">-</BaseButton>
 </template>
 
 <script lang="ts">
@@ -14,9 +16,17 @@ export default {
     HelloWorld,
     TheHeader
   },
+  data() {
+    return {
+      count: 0 as number,
+    }
+  },
   methods: {
-    alertOnClick: () => {
-      alert('Hello World')
+    plusOne(): void {
+      this.count++
+    },
+    minusOne(): void {
+      this.count--
     }
   }
 }
