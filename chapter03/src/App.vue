@@ -3,6 +3,9 @@
   <div>{{ count }}</div>
   <BaseButton @onClick="plusOne">+</BaseButton>
   <BaseButton @onClick="minusOne">-</BaseButton>
+
+  <input v-model="inputCount" type="number">
+  <base-button @onClick="insertCount">insert</base-button>
 </template>
 
 <script lang="ts">
@@ -19,6 +22,7 @@ export default {
   data() {
     return {
       count: 0 as number,
+      inputCount: 0 as number
     }
   },
   methods: {
@@ -27,6 +31,9 @@ export default {
     },
     minusOne(): void {
       this.count--
+    },
+    insertCount(): void {
+      this.count = this.inputCount
     }
   }
 }
