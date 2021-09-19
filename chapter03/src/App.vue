@@ -1,28 +1,49 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png"/>
   <div>{{ count }}</div>
-  <BaseButton @onClick="plusOne">+</BaseButton>
-  <BaseButton @onClick="minusOne">-</BaseButton>
+  <BaseButton :disabled="hasMaxCount" @onClick="plusOne">+</BaseButton>
+  <BaseButton :disabled="hasMinCount" @onClick="minusOne">-</BaseButton>
 
-  <input v-model="inputCount" type="number">
+  <NumberInput v-model.numberOnly="inputCount" max="9999" min="0"></NumberInput>
   <base-button @onClick="insertCount">insert</base-button>
 </template>
 
 <script lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
 import TheHeader from './components/TheHeader.vue'
-import BaseButton from "./components/BaseButton.vue";
+import BaseButton from './components/BaseButton.vue'
+import NumberInput from './components/NumberInput.vue'
 
 export default {
   components: {
     BaseButton,
     HelloWorld,
-    TheHeader
+    TheHeader,
+    NumberInput
   },
   data() {
     return {
       count: 0 as number,
       inputCount: 0 as number
+    }
+  },
+  watch: {
+    inputCount(value: number) {
+      if (value >= 9999) {
+        this.inputCount = 9999;
+      }
+
+      if (value <= 0) {
+        this.inputCount = 0
+      }
+    }
+  },
+  computed: {
+    hasMaxCount(): number {
+      return this.count >= 9999
+    },
+    hasMinCount(): number {
+      return this.count <= 0
     }
   },
   methods: {
