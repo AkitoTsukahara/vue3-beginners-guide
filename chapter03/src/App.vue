@@ -36,13 +36,14 @@ export default {
       if (value <= 0) {
         this.inputCount = 0
       }
+
     }
   },
   computed: {
-    hasMaxCount(): number {
+    hasMaxCount(): boolean {
       return this.count >= 9999
     },
-    hasMinCount(): number {
+    hasMinCount(): boolean {
       return this.count <= 0
     }
   },
