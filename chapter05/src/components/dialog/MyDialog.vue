@@ -29,7 +29,7 @@
 import {defineComponent, watchEffect} from "vue";
 
 export default defineComponent({
-  name: 'NyDialog',
+  name: 'MyDialog',
   props: {
     visible: {
       type: Boolean,
